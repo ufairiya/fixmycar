@@ -1,0 +1,18 @@
+/* here you can put your own css to customize and override the theme */
+/*green #579C3A
+orange #EB8F42
+blue #004A97 */
+.aedit_details, .aedit_details:hover {
+    color: green;
+    font-size: 15px;
+    color: #fff;
+    background-color: #004A97;
+    /* border-color: #563d7c; */
+    border-radius: 15px !important;
+    text-decoration: none;
+    padding: 7px 16px;
+    width: auto;
+}
+#cke_1_toolbox #cke_21,#cke_1_toolbox #cke_86 {display:none;}
+#cke_mail_content #cke_25,#cke_mail_content  #cke_38,#cke_mail_content  #cke_90,#cke_mail_content  #cke_87{display:none;}
+#cke_mail_contentg #cke_118, #cke_mail_contentg #cke_180, #cke_mail_contentg #cke_183{display:none;}

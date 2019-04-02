@@ -1,0 +1,112 @@
+/* here you can put your own css to customize and override the theme */
+.help-block {
+   font-size: 12px;
+    font-style: italic;
+}
+
+.view_mode .form-control {    border: 0px }
+
+
+
+.view_mode label {
+  font-weight: 700;
+    font-size: 15px;
+
+}
+.re_view_mode .form-control {    border: 0px }
+
+
+
+.re_view_mode label {
+  font-weight: 700;
+    font-size: 15px;
+
+} 
+
+.form-body.user-cols-selection > div {
+    padding: 10px 0px;
+}
+
+.col_des {border: 1px solid #17c4bb;}
+#contract_st h4{    margin-top: 0px;
+    margin-bottom: 0px;}
+.ta_ma {margin: 0 auto;>}
+.add_cm .form-group {
+    margin: 7px 0px;
+}
+
+
+.im_fr .fl {    float: left}
+.im_fr .fr {    float: right}
+.portlet.light.stl_cls {
+    padding: 5px 10px 5px !important;
+}
+
+.stl_cls .caption{padding: 5px 0 !important;}
+
+.stl_cls .portlet.light {padding-top: 0px !important;} 
+.stl_cls .portlet-body{padding-top: 0px !important;}
+
+.stl_cls .mt-actions {    padding: 5px 0px !important;}
+.stl_cls .mt-action{    padding: 5px 0px !important;}
+
+
+.stl_cls .portlet-title {
+    padding: 0;
+    min-height: 30px !important;
+        margin-bottom: 0px;
+    }
+    .lng_pt {padding: 15px 12px;}
+/*
+    rect.highcharts-point.highcharts-color-0 {
+    fill: rgb(209, 29, 46) !important; 
+}
+
+path.highcharts-area {
+     fill: rgb(209, 129, 129) !important; 
+}
+
+path.highcharts-point.highcharts-color-0.highcharts-point-hover {
+
+fill: rgb(209, 29, 46) !important; 
+}
+path.highcharts-halo.highcharts-color-0 {
+ fill: rgb(209, 129, 129) !important; 
+}
+
+path.highcharts-point.highcharts-color-0 {
+
+
+fill: rgb(237, 43, 43) !important;
+}
+
+
+rect.highcharts-point {
+ fill: rgb(209, 129, 129) !important; 
+
+}
+*/
+
+
+.col-md-12.add_cm {
+    font-size: 13px;
+}
+.log {    position: absolute;
+    right: 40px;
+    top: 60px;
+    }
+    
+.dashboard-stat2 .display .icon>i {
+     font-size: 18px  !important; 
+}
+
+.dashboard-stat2 .display .number small {
+    font-size: 12px  !important; 
+  
+}
+
+dashboard-stat2 .display .number h3 {
+  
+    font-size: 35px  !important; 
+ 
+}

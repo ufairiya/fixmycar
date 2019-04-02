@@ -1,0 +1,107 @@
+/* Cubic Bezier Transition */
+/***
+Invoice page
+***/
+.invoice {
+  margin: 0; }
+  /*.invoice table {
+    margin: 30px 0 30px 0; }*/
+
+.invoice .invoice-logo {
+  margin-bottom: 20px; }
+
+.invoice .invoice-logo p {
+  padding: 5px 0;
+  font-size: 26px;
+  line-height: 28px;
+  text-align: right; }
+
+.invoice .invoice-logo p span {
+  display: block;
+  font-size: 14px; }
+
+.invoice .invoice-logo-space {
+  margin-bottom: 15px; }
+
+.invoice .invoice-payment strong {
+  margin-right: 5px; }
+
+.invoice .invoice-block {
+  text-align: right; }
+
+.invoice .invoice-block .amounts {
+  margin-top: 20px;
+  font-size: 14px; }
+.inv-img{
+    width: 90%;
+}
+.inv-title{
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.inv-header p{
+    font-size: 18px !important;
+    font-weight: bolder;
+    text-align: right;
+    padding: 0px !important;
+    margin: 2px !important;
+}
+.inv-header > table{
+    margin: 0px !important;
+}
+.inv_header ul.list-unstyled{
+    font-size: 15px;
+}
+.company_name{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tab-address{
+    min-height: 200px;
+}
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+    border: 2px solid #949494 !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.table-itemList{
+    min-height: 200px;
+}
+.item-right{
+    text-align: right;
+}
+.tab-thead{
+      background-color: #e6e6e6 !important;
+      -webkit-print-color-adjust: exact;
+}
+.tab-thead>tr>th{
+  text-align: center;
+}
+.tab-tbody>tr>td{
+  text-align: center;
+}
+.tab-head>tr>th{
+  text-align: center;
+}
+.lineno{
+  text-align: center !important; 
+}
+@media print {
+   body {
+  /*background: white;*/
+  color: black;
+  width: 95%;
+  margin: 0 auto;
+  font: normal 12px/150% Verdana, Arial, Helvetica, sans-serif;
+  -webkit-print-color-adjust: exact;
+  }
+  
+  .tab-thead{
+      background: #e6e6e6 !important;
+      
+}
+}
+

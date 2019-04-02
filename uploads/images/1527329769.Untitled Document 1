@@ -1,0 +1,163 @@
+<?php
+/*
+ Plugin Name: gowtham test Plugin
+ Description: Plugin for testing purpose
+ Version: 1
+ Author: gowtham
+ Author URI: http://stallioni.com
+*/
+register_activation_hook( __FILE__, 'elh_insert_into_db_activate' );
+ 
+function elh_insert_into_db_activate(){
+ 
+}
+function elh_insert_into_db() {
+   global $wpdb;
+   // creates my_table in database if not exists
+   $table = $wpdb->prefix . "my_table"; 
+   $charset_collate = $wpdb->get_charset_collate();
+   $sql = "CREATE TABLE IF NOT EXISTS $table (
+       `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+       `name` text NOT NULL, `lname` text NOT NULL, `gender` text NOT NULL, `eq` text NOT NULL, `dist` text NOT NULL, `email` text NOT NULL, `dob` date NOT NULL, `phone` text NOT NULL,
+   UNIQUE (`id`)
+   ) $charset_collate;";
+   require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+   dbDelta( $sql );
+   // starts output buffering
+   ob_start();
+   ?>
+
+   <form action="" method="post" id="">
+       <h2>Student Registration Form</h2>
+   <label>FirstName</label>
+    <input type="text" name="visitor_name" value="<?php echo $name;?>">
+ <br> <br>
+  <label>LasttName</label>
+   <input type="text" name="lname" value="<?php echo $lname;?>">
+    <br> <br>
+ <lable>Gender</lable>
+  Male<input value="m"  type="radio" name="gender"  <?php if($res['gender']=="m"){echo "checked";}?>/>
+  Female<input value="f" type="radio" name="gender" <?php if($res['gender']=="f"){echo "checked";}?> />         
+<br><br>
+  Education Qualification:
+<select name="eq">
+<option value="">Select</option>
+<option <?php if($res['qualification']=="10th"){echo "selected";}?>>10th</option>
+<option <?php if($res['qualification']=="12th"){echo "selected";}?>>12th</option>
+<option <?php if($res['qualification']=="UG"){echo "selected";}?>>UG</option>
+<option <?php if($res['qualification']=="PG"){echo "selected";}?>>PG</option>
+</select>
+<br> <br>
+District:
+  <select name="dist" value="<?php echo $dist;?>">
+  <option value="select" selected>select..</option>
+  <option value="Coimbatore">Coimbatore</option>
+  <option value="Erode">Erode</option>
+   <option value="Selam">Selam</option>
+  <option value="Tirupur">Tirupur</option>
+  <option value="Chennai">Chennai</option>
+  </select>
+<br><br>
+  <label>Email Id</label>
+<input type="text" name="email" value="<?php echo $email;?>">
+<br><br>
+  <label>Dob</label>
+<input type="date" name="dob" value="<?php echo $dob;?>">
+<br><br>
+  <label>Mobile No</label>
+<input type="text" name="phone" value="<?php echo $phone;?>">
+<br><br>		
+	<input type="hidden" name="id" value=<?php echo $_GET['id'];?>>
+	<input type="submit" name="update" value="Update">
+       <input type="reset">
+       <input type="submit" name="submit_form" value="submit" />
+       <input type="submit" name="view" value="view">
+   </form> 
+<?php
+   $html = ob_get_clean();
+   if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+       if(isset($_POST['submit_form']))
+      {
+        $table = $wpdb->prefix."my_table";
+       $name = strip_tags($_POST["visitor_name"], "");
+       $lname = strip_tags($_POST["lname"], "");
+       $gender = strip_tags($_POST["gender"], "");
+       $eq = strip_tags($_POST["eq"], "");
+       $dist = strip_tags($_POST["dist"], "");
+	$email = strip_tags($_POST["email"], "");
+	$dob = strip_tags($_POST["dob"], "");
+	$phone = strip_tags($_POST["phone"], "");
+       $wpdb->insert( 
+           $table, 
+           array( 
+               'name' => $name,
+               'lname' => $lname,
+               'gender' => $gender,
+               'eq' => $eq,
+	       'dist' => $dist,
+		'email' => $email,
+		'dob' => $dob,
+		'phone' => $phone
+           )  
+       );
+       $html = "<p>Your name <strong>$name</strong> was successfully recorded. Thanks!!</p>";
+      }
+      if(isset($_POST['view']))
+      {
+        global $wpdb;
+        $tableform=$wpdb->prefix.'my_table';
+        $value=$wpdb->get_results("SELECT  * FROM ".$tableform);
+        foreach($value as $val)
+        {
+        $id=$val->id;
+	$url = site_url( '/index.php/Gk/', 'http' );
+        echo '<br>'.$id.$val->name;
+        echo '<br>'.$id.$val->lname;
+	echo '<br>'.$id.$val->gender;  
+        echo '<br>'.$id.$val->eq;
+        echo '<br>'.$id.$val->dist;
+	 echo '<br>'.$id.$val->email;
+ 	 echo '<br>'.$id.$val->dob;
+ 	 echo '<br>'.$id.$val->phone;
+	echo '<td><a href="'.$url.'/?id='.$id.'">edit</a></td></tr>';
+        }
+      if(isset($_POST['update']))
+       {
+      global $wpdb;
+        $tableform=$wpdb->prefix.'my_table';
+        $res=$wpdb->get_row("SELECT  * FROM tableform WHERE id=$id");
+        $id = $_GET['id'];
+	$name = $res['name'];
+        $lname = $res['lname'];
+        $gender = $res['gender'];
+        $eq = $res['eq'];
+        $dist = $res['dist'];
+        $email = $res['email'];
+        $dob = $res['dob'];
+        $phone = $res['phone'];
+
+}
+   // does the inserting, in case the form is filled and submitted
+    
+   // if the form is submitted but the name is empty
+   if ( isset( $_POST["submit_form"] ) && $_POST["visitor_name"] == "" )
+{       $html .= "<p>You need to fill the required fields.</p>";
+   // outputs everything
+   return $html; 
+
+}
+// adds a shortcode you can use: [insert-into-db]
+add_shortcode('elh-db-insert', 'elh_insert_into_db');
+?>      
+<?php
+register_deactivation_hook( __FILE__, 'my_plugin_remove_database' );
+function my_plugin_remove_database() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'my_table';
+    $sql = "DROP TABLE IF EXISTS $table_name";
+    $wpdb->query($sql);
+    delete_option("my_plugin_db_version");
+}   
+?>
+

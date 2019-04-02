@@ -1,0 +1,4 @@
+/* here you can put your own css to customize and override the theme */
+.mt-repeater .mt-repeater-delete.mt-0 {
+    margin-top: 0px;
+}
